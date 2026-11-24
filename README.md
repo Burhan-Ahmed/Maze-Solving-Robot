@@ -26,29 +26,6 @@ An autonomous line-following maze-solving robot built on an Arduino UNO (ATmega3
 | Power | 2x 18650 Li-ion cells (3.7 V, 2200 mAh) with switch |
 | Chassis | Two-layer car chassis |
 
-## Pin configuration
-
-**IR sensors**
-
-| Sensor | Arduino pin |
-|---|---|
-| Right most | 2 |
-| Right | 3 |
-| Center | 12 |
-| Upper center (end marker) | 13 |
-| Left | 4 |
-| Left most | 5 |
-
-**L298N motor driver**
-
-| Signal | Arduino pin |
-|---|---|
-| ENA | 6 |
-| IN1 | 7 |
-| IN2 | 8 |
-| IN3 | 9 |
-| IN4 | 10 |
-| ENB | 11 |
 
 ## How it works
 
@@ -62,14 +39,6 @@ Each IR sensor outputs `0` on black (line) and `1` on white (surface). The Ardui
 
 Motor speed is set with PWM (`Speed = 160`) on the L298N enable pins.
 
-## Getting started
-
-1. Wire the circuit using the pin tables above.
-2. Open the sketch in the **Arduino IDE** and select *Arduino Uno*.
-3. Upload it. The sketch compiles to 3110 bytes (9% of program storage) and 268 bytes (13%) of dynamic memory.
-4. Open the Serial Monitor at **9600 baud** to check the sensor readings.
-5. Put the robot at the start of a black-tape maze on a light surface, switch on the battery, and it starts solving.
-
 ## Results
 
 - Sensor values verified live through the Serial Monitor
@@ -77,30 +46,10 @@ Motor speed is set with PWM (`Speed = 160`) on the L298N enable pins.
 - Robot stops at the end of the maze
 - Circuit validated in a Proteus simulation
 
-*(Add photos or GIFs of the robot to an `images/` folder and link them here.)*
-
-## Challenges and lessons learned
-
-- At high speed the robot overshoots sharp corners, and adding `delay()` did not fix it, so a medium speed gave the best results.
-- PWM that is too low can leave only one wheel turning, so a tuned speed is needed.
-- Six sensors give 2^6 possible readings, and every one must be handled, otherwise the robot can get stuck in undefined cases.
-
-## Future improvements
-
-- PID control for smoother, faster line tracking
-- Shortest-path optimization on a second run (storing the maze path)
-- Wheel encoders for better turn accuracy
-
-## Tech stack
-
-`C/C++` | `Arduino IDE` | `ATmega328P` | `L298N` | `IR sensors` | `PWM` | `Proteus`
-
 ## Authors
 
 - **Muhammad Burhan Ahmed**
 - **Asnan Khan**
-
-**Instructor:** Dr. Mumajjed UL Mudassir, Air University, Islamabad
 
 ## License
 
